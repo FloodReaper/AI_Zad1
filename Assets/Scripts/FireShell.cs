@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 
 public class FireShell : MonoBehaviour {
@@ -8,13 +7,14 @@ public class FireShell : MonoBehaviour {
     public GameObject turret;
     public GameObject enemy;
 
-    void CreateBullet() {
+    void CreateBullet() 
+    {
 
         Instantiate(bullet, turret.transform.position, turret.transform.rotation);
     }
 
-    void Update() {
-
+    void Update() 
+    {
         if (Input.GetKeyDown(KeyCode.Space)) {
 
             Vector3 aimAt = CalculateTrajectory();
@@ -26,8 +26,8 @@ public class FireShell : MonoBehaviour {
         }
     }
 
-    Vector3 CalculateTrajectory() {
-
+    Vector3 CalculateTrajectory() 
+    {
         Vector3 p = enemy.transform.position - this.transform.position;
         Vector3 v = enemy.transform.forward * enemy.GetComponent<Drive>().speed;
         float s = bullet.GetComponent<MoveShell>().speed;
